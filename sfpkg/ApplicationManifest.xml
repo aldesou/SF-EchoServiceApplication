@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest ApplicationTypeName="EchoServiceApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <Parameters>
+        <Parameter Name="EchoService_Port" DefaultValue="8080" />
+    </Parameters>
+
+    <ServiceManifestImport>
+        <ServiceManifestRef ServiceManifestName="EchoService" ServiceManifestVersion="1.0.0" />
+            <ConfigOverrides />
+            <ResourceOverrides>
+                <Endpoints>
+                    <Endpoint Name="ServiceEndpoint" Protocol="tcp" Port="[EchoService_Port]" />
+                </Endpoints>
+            </ResourceOverrides>
+    </ServiceManifestImport>
+
+    <ServiceTemplates>
+        <StatelessService ServiceTypeName="EchoServiceType" InstanceCount="-1">
+            <SingletonPartition/>
+        </StatelessService>
+     </ServiceTemplates>
+
+    <Diagnostics>
+        <CrashDumpSource IsEnabled="true">
+            <Destinations>
+                <LocalStore IsEnabled="true" RelativeFolderPath="CrashDumps" />
+            </Destinations>
+        </CrashDumpSource>
+    </Diagnostics>
+
+</ApplicationManifest>
