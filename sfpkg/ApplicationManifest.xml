@@ -7,12 +7,11 @@
 
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="EchoService" ServiceManifestVersion="1.0.0" />
-            <ConfigOverrides />
-            <ResourceOverrides>
-                <Endpoints>
-                    <Endpoint Name="ServiceEndpoint" Protocol="tcp" Port="[EchoService_Port]" />
-                </Endpoints>
-            </ResourceOverrides>
+        <ResourceOverrides>
+            <Endpoints>
+                <Endpoint Name="ServiceEndpoint" Protocol="tcp" Port="[EchoService_Port]" />
+            </Endpoints>
+        </ResourceOverrides>
     </ServiceManifestImport>
 
     <ServiceTemplates>
